@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "pipeline-guide": {
+      "source": "MaaXYZ/MaaHub",
+      "sourceType": "github",
+      "skillPath": "Storage/skills/KhazixW2/pipeline-guide/SKILL.md",
+      "computedHash": "611b9693b14a5fc22b0819a68744d74883404ccf78b0b28b1e62d54adc7d515a"
+    }
+  }
+}
