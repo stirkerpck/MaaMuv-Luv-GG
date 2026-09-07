@@ -28,7 +28,34 @@
     "task": [
         {
             "name": "自动刷图与强化",
-            "entry": "NodeA"
+            "label": "自动刷图与装备强化",
+            "description": "自动探索迷宫，刷满指定轮数后进入装备强化。开始前请先确保已进入游戏。",
+            "entry": "NodeA",
+            "option": [
+                "刷几轮后停"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "刷几轮后停": {
+            "type": "input",
+            "label": "刷几轮后停",
+            "description": "输入探索重复次数，到该次数后停止再进入装备强化。",
+            "inputs": [
+                {
+                    "name": "轮数",
+                    "label": "回合数",
+                    "default": "50",
+                    "pipeline_type": "int",
+                    "verify": "^[0-9]+$",
+                    "pattern_msg": "请输入非负整数"
+                }
+            ],
+            "pipeline_override": {
+                "MuvLuv_MazePrepare": {
+                    "max_hit": "{轮数}"
+                }
+            }
+        }
+    }
 }
