@@ -154,71 +154,7 @@
         },
         "timeout": -1,
         "next": [
-            "MuvLuv_LevelUI",
-            "MuvLuv_LevelCurrent"
-        ]
-    },
-    "MuvLuv_LevelUI": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "jiemian_startarea.png",
-                "threshold": 0.7
-            }
-        },
-        "next": [
-            "MuvLuv_LevelCurrent"
-        ]
-    },
-    "MuvLuv_LevelCurrent": {
-        "recognition": {
-            "type": "DirectHit"
-        },
-        "timeout": -1,
-        "next": [
-            "MuvLuv_LevelTarget",
-            "MuvLuv_LevelDownClick"
-        ]
-    },
-    "MuvLuv_LevelTarget": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    905,
-                    220,
-                    270,
-                    72
-                ],
-                "expected": [
-                    "^200$"
-                ],
-                "only_rec": true
-            }
-        },
-        "timeout": -1,
-        "next": [
             "MuvLuv_MazePrepare"
-        ]
-    },
-    "MuvLuv_LevelDownClick": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "tiaodengxin1.png",
-                "threshold": 0.7
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [641, 236, 40, 40]
-            }
-        },
-        "post_delay": 500,
-        "timeout": -1,
-        "next": [
-            "MuvLuv_LevelCurrent"
         ]
     },
     "MuvLuv_MazePrepare": {
@@ -282,7 +218,26 @@
         "timeout": -1,
         "next": [
             "MuvLuv_ExploreEnd",
-            "MuvLuv_Select"
+            "MuvLuv_Select",
+            "MuvLuv_Victory"
+        ]
+    },
+    "MuvLuv_Victory": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "victory_next.png",
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_ExploreEnd",
+            "MuvLuv_Select",
+            "MuvLuv_Victory"
         ]
     },
     "MuvLuv_Select": {
@@ -297,17 +252,18 @@
             "type": "Click",
             "param": {
                 "target_offset": [
-                    255,
-                    260,
-                    -970,
-                    -374
+                    65,
+                    347,
+                    -890,
+                    -354
                 ]
             }
         },
         "timeout": -1,
         "next": [
             "MuvLuv_RouteSelect",
-            "MuvLuv_ExploreLeave"
+            "MuvLuv_ExploreLeave",
+            "MuvLuv_Select"
         ]
     },
     "MuvLuv_RouteSelect": {
@@ -446,7 +402,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_LvMaxCheck"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_LvMaxCheck"]
     },
     "MuvLuv_LvMaxCheck": {
         "recognition": {
@@ -486,7 +442,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_LvMaxCheck2"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_LvMaxCheck2"]
     },
     "MuvLuv_LvMaxCheck2": {
         "recognition": {
@@ -526,7 +482,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_LvMaxCheck3"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_LvMaxCheck3"]
     },
     "MuvLuv_LvMaxCheck3": {
         "recognition": {
@@ -566,7 +522,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_LvMaxCheck4"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_LvMaxCheck4"]
     },
     "MuvLuv_LvMaxCheck4": {
         "recognition": {
@@ -584,6 +540,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": "minjie.png",
+                "roi": [470, 100, 160, 50],
                 "threshold": 0.7
             }
         },
@@ -598,7 +555,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": "minjiezbjm.png",
-                "threshold": 0.7
+                "threshold": 0.8
             }
         },
         "timeout": -1,
@@ -613,6 +570,7 @@
             "type": "TemplateMatch",
             "param": {
                 "template": "enqh.png",
+                "roi": [325, 100, 150, 50],
                 "threshold": 0.7
             }
         },
@@ -656,7 +614,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_EnLvMaxCheck"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_EnLvMaxCheck"]
     },
     "MuvLuv_EnLvMaxCheck": {
         "recognition": {
@@ -696,7 +654,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_EnLvMaxCheck2"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_EnLvMaxCheck2"]
     },
     "MuvLuv_EnLvMaxCheck2": {
         "recognition": {
@@ -736,7 +694,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_EnLvMaxCheck3"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_EnLvMaxCheck3"]
     },
     "MuvLuv_EnLvMaxCheck3": {
         "recognition": {
@@ -776,7 +734,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_EnLvMaxCheck4"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_EnLvMaxCheck4"]
     },
     "MuvLuv_EnLvMaxCheck4": {
         "recognition": {
@@ -808,7 +766,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_MinLvMaxCheck"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_MinLvMaxCheck"]
     },
     "MuvLuv_MinLvMaxCheck": {
         "recognition": {
@@ -848,7 +806,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_MinLvMaxCheck2"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_MinLvMaxCheck2"]
     },
     "MuvLuv_MinLvMaxCheck2": {
         "recognition": {
@@ -888,7 +846,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_MinLvMaxCheck3"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_MinLvMaxCheck3"]
     },
     "MuvLuv_MinLvMaxCheck3": {
         "recognition": {
@@ -928,7 +886,7 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_MinLvMaxCheck4"]
+        "next": ["MuvLuv_QhStop", "MuvLuv_MinLvMaxCheck4"]
     },
     "MuvLuv_MinLvMaxCheck4": {
         "recognition": {
