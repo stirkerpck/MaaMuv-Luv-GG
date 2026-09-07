@@ -172,11 +172,45 @@
     },
     "MuvLuv_LevelLoop": {
         "next": [
-            "MuvLuv_LevelTarget",
-            "MuvLuv_LevelAbove",
-            "MuvLuv_LevelUp"
+            "MuvLuv_LevelCurrent"
         ],
         "timeout": -1
+    },
+    "MuvLuv_LevelCurrent": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    870,
+                    205,
+                    330,
+                    105
+                ],
+                "expected": [
+                    "[0-9]{1,3}"
+                ],
+                "replace": [
+                    [
+                        "O",
+                        "0"
+                    ],
+                    [
+                        "l",
+                        "1"
+                    ],
+                    [
+                        "I",
+                        "1"
+                    ]
+                ]
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_LevelTarget",
+            "MuvLuv_LevelAbove",
+            "MuvLuv_LevelBelow"
+        ]
     },
     "MuvLuv_LevelTarget": {
         "recognition": {
@@ -214,39 +248,35 @@
     },
     "MuvLuv_LevelAbove": {
         "recognition": {
-            "type": "OCR",
+            "type": "Custom",
             "param": {
-                "roi": [
-                    870,
-                    205,
-                    330,
-                    105
-                ],
-                "expected": [
-                    "(2[0-9][1-9]|2[1-9][0-9]|3[0-9][0-9]|400)"
-                ],
-                "replace": [
-                    [
-                        "O",
-                        "0"
-                    ],
-                    [
-                        "l",
-                        "1"
-                    ],
-                    [
-                        "I",
-                        "1"
-                    ]
-                ]
+                "custom_recognition": "ExpressionRecognition",
+                "custom_recognition_param": {
+                    "expression": "{MuvLuv_LevelCurrent} > 200"
+                }
             }
         },
         "timeout": -1,
         "next": [
-            "MuvLuv_LevelDown"
+            "MuvLuv_LevelDownClick"
         ]
     },
-    "MuvLuv_LevelUp": {
+    "MuvLuv_LevelBelow": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "ExpressionRecognition",
+                "custom_recognition_param": {
+                    "expression": "{MuvLuv_LevelCurrent} < 200"
+                }
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_LevelUpClick"
+        ]
+    },
+    "MuvLuv_LevelUpClick": {
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -262,7 +292,7 @@
             "MuvLuv_LevelLoop"
         ]
     },
-    "MuvLuv_LevelDown": {
+    "MuvLuv_LevelDownClick": {
         "recognition": {
             "type": "TemplateMatch",
             "param": {
