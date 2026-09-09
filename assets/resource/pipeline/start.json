@@ -1,15 +1,12 @@
 {
-    "NodeA": {
-        "action": {
-            "type": "StartApp",
-            "param": {
-                "package": "jp.co.fanzagames.muvluv_ggx_app"
-            }
-        },
-        "next": [
-            "MuvLuv_WaitAnyPage"
-        ]
+  "NodeA": {
+    "action": {
+      "type": "DoNothing"
     },
+    "next": [
+      "MuvLuv_WaitAnyPage"
+    ]
+  },
     "MuvLuv_WaitAnyPage": {
         "next": [
             "MuvLuv_TouchToStart",
