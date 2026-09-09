@@ -10,6 +10,7 @@
     // 填写项目地址和版本号可实现自动更新功能
     "github": "https://github.com/stirkerpck/MaaMuv-Luv-GG",
     "version": "1.0.0",
+    // 连接说明：MuMu 12 填 127.0.0.1:16384（并关闭截图增强）；雷电 127.0.0.1:5555；夜神 127.0.0.1:62001
     "controller": [
         {
             "name": "安卓端",

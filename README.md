@@ -5,39 +5,56 @@
 
 <div align="center">
 
-# MaaPracticeBoilerplate
+# MuvLuv GG 自动刷图与装备强化
 
 </div>
 
-本仓库为 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 所提供的项目模板，开发者可基于此模板直接创建自己的 MaaXXX 项目。
+基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 与 [MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia) 的 Muv-Luv GG 自动化脚本：自动探索迷宫、刷图，并完成装备强化。
 
-> **MaaFramework** 是基于图像识别技术、运用 [MAA](https://github.com/MaaAssistantArknights/MaaAssistantArknights) 开发经验去芜存菁、完全重写的新一代自动化黑盒测试框架。
-> 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
+> 本项目为通用 UI（MFAAvalonia）项目，通过 ADB 连接安卓模拟器执行。
 
-## 即刻开始
+## 快速开始
 
-**请不要直接克隆本仓库！你应该通过模板创建自己的项目！**  
+1. 下载并解压本项目的 Release 包。
+2. 打开 `MFAAvalonia.exe`。
+3. 在「连接设置」中配置你的模拟器（见下方「模拟器连接」）。
+4. 连接成功后，在任务列表勾选「自动刷图与装备强化」，填写刷图轮数，点击开始。
 
-请阅读 [如何开发](./docs/zh_cn/develop/how_to_develop.md)。
+## 模拟器连接
 
-向本模板仓库提交改动前，请阅读 [PR 规范](./docs/zh_cn/develop/pull_request_guidelines.md)。
+本项目使用 MAA 通用 ADB 控制器连接模拟器，**不绑定特定模拟器品牌**，MuMu、雷电、夜神、逍遥等均可使用，只需在「连接设置」里填入对应模拟器的 ADB 地址。
 
-## 生态共建
+### 使用 MuMu 模拟器
 
-MAA 正计划建设为一类项目，而非舟的单一软件。
+- **支持**：MuMu 12、MuMu 6 均可使用。
+- **开启 ADB 调试**：在 MuMu 设置 → 其他 中打开「ADB 调试」。
+- **ADB 地址**：
+  - MuMu 12：`127.0.0.1:16384`
+  - MuMu 6 / 旧版：`127.0.0.1:7555`
+- **连接测试**：命令行执行 `adb connect 127.0.0.1:16384`，显示 `connected` 即为成功。
 
-若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX, MXA, MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法！
+> **重要：必须关闭「截图增强」！**
+> MuMu 12 默认开启「截图增强」，会导致 MAA 截图花屏、图像/文字识别全部失败。请在 MuMu 设置中关闭它，否则脚本能连上但无法运行。
 
-同时，我们也非常欢迎您提出 PR，在 [社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 中添加上您的项目！
+### 使用雷电模拟器（LDPlayer）
+
+- 默认 ADB 地址：`127.0.0.1:5555`。
+- 在雷电设置中开启「ADB 调试」。
+
+### 使用夜神模拟器
+
+- 默认 ADB 地址：`127.0.0.1:62001`。
+
+### 分辨率
+
+项目使用 `display_short_side: 720`，MAA 会按短边 720 缩放识别。模拟器窗口分辨率不影响识别，只要 ADB 能连上即可。
 
 ## 常见问题
 
-请阅读 [常见问题](./docs/zh_cn/develop/faq.md)。
+- 连不上模拟器：确认已开启 ADB 调试、地址正确、模拟器已启动。
+- 连上但识别失败：MuMu 用户请先关闭「截图增强」。
+- 任务开始没反应：确认已成功连接模拟器，且已进入 Muv-Luv GG 游戏界面。
 
 ## 鸣谢
 
-本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
-
-感谢以下开发者对本项目作出的贡献（下面链接改成你自己的项目地址）:
-
-[![Contributors](https://contrib.rocks/image?repo=MaaXYZ/MaaFramework&max=1000)](https://github.com/MaaXYZ/MaaFramework/graphs/contributors)
+本项目由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 与 [MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia) 强力驱动。
