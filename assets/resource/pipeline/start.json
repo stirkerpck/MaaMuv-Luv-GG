@@ -1,12 +1,12 @@
 {
-  "NodeA": {
+    "NodeA": {
     "action": {
       "type": "DoNothing"
     },
     "next": [
       "MuvLuv_WaitAnyPage"
     ]
-  },
+    },
     "MuvLuv_WaitAnyPage": {
         "next": [
             "MuvLuv_TouchToStart",
@@ -199,7 +199,12 @@
             "type": "Click"
         },
         "timeout": -1,
-        "next": ["MuvLuv_Next"]
+        "next": [
+            "MuvLuv_Xiuxi",
+            "MuvLuv_Zhongliao",
+            "MuvLuv_Xuanxiang",
+            "MuvLuv_Next"
+        ]
     },
     "MuvLuv_Next": {
         "recognition": {
@@ -214,6 +219,9 @@
         },
         "timeout": -1,
         "next": [
+            "MuvLuv_Xiuxi",
+            "MuvLuv_Zhongliao",
+            "MuvLuv_Xuanxiang",
             "MuvLuv_ExploreEnd",
             "MuvLuv_Select",
             "MuvLuv_Victory"
@@ -278,8 +286,97 @@
         "next": ["MuvLuv_ExploreLoop"]
     },
     "MuvLuv_ExploreLoop": {
-        "next": ["MuvLuv_Skip"],
+        "next": [
+            "MuvLuv_Xiuxi",
+            "MuvLuv_Zhongliao",
+            "MuvLuv_Xuanxiang",
+            "MuvLuv_Skip"
+        ],
         "timeout": -1
+    },
+    "MuvLuv_Xiuxi": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "xiuxi.png",
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    880,
+                    450,
+                    90,
+                    40
+                ]
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_Skip",
+            "MuvLuv_Next",
+            "MuvLuv_Select",
+            "MuvLuv_Victory",
+            "MuvLuv_Xiuxi"
+        ]
+    },
+    "MuvLuv_Zhongliao": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "1111.png",
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    950,
+                    648,
+                    90,
+                    28
+                ]
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_Skip",
+            "MuvLuv_Next",
+            "MuvLuv_Select",
+            "MuvLuv_Victory",
+            "MuvLuv_Zhongliao"
+        ]
+    },
+    "MuvLuv_Xuanxiang": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "2222.png",
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    880,
+                    362,
+                    80,
+                    28
+                ]
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_Skip",
+            "MuvLuv_Next",
+            "MuvLuv_Select",
+            "MuvLuv_Victory",
+            "MuvLuv_Xuanxiang"
+        ]
     },
     "MuvLuv_ExploreEnd": {
         "recognition": {
@@ -349,6 +446,675 @@
         "timeout": -1,
         "repeat": 2,
         "next": ["MuvLuv_Zhuangbei"]
+    },
+    "NodeB": {
+        "action": {
+            "type": "DoNothing"
+        },
+        "next": [
+            "MuvLuv_WaitAnyPage"
+        ]
+    },
+    "MuvLuv_ArtifactTab": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "3334.png",
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_ArtifactScreen"
+        ]
+    },
+    "MuvLuv_ArtifactScreen": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "3335.png",
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "DoNothing"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtQh1",
+            "MuvLuv_ArtMax1"
+        ]
+    },
+    "MuvLuv_ArtQh1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    195,
+                    220,
+                    100
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMax1"
+        ]
+    },
+    "MuvLuv_ArtMax1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtQh2",
+            "MuvLuv_ArtMax2"
+        ]
+    },
+    "MuvLuv_ArtQh2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    985,
+                    195,
+                    225,
+                    100
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMax2"
+        ]
+    },
+    "MuvLuv_ArtMax2": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtQh3",
+            "MuvLuv_ArtMax3"
+        ]
+    },
+    "MuvLuv_ArtQh3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    330,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMax3"
+        ]
+    },
+    "MuvLuv_ArtMax3": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtQh4",
+            "MuvLuv_ArtMax4"
+        ]
+    },
+    "MuvLuv_ArtQh4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    985,
+                    330,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMax4"
+        ]
+    },
+    "MuvLuv_ArtMax4": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtQh5",
+            "MuvLuv_ArtMax5"
+        ]
+    },
+    "MuvLuv_ArtQh5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    465,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMax5"
+        ]
+    },
+    "MuvLuv_ArtMax5": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_ArtEnTab"
+        ]
+    },
+    "MuvLuv_ArtEnTab": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "enqh.png",
+                "roi": [
+                    325,
+                    100,
+                    150,
+                    50
+                ],
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnQh1",
+            "MuvLuv_ArtEnMax1"
+        ]
+    },
+    "MuvLuv_ArtEnQh1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    195,
+                    220,
+                    100
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnMax1"
+        ]
+    },
+    "MuvLuv_ArtEnMax1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnQh2",
+            "MuvLuv_ArtEnMax2"
+        ]
+    },
+    "MuvLuv_ArtEnQh2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    985,
+                    195,
+                    225,
+                    100
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnMax2"
+        ]
+    },
+    "MuvLuv_ArtEnMax2": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnQh3",
+            "MuvLuv_ArtEnMax3"
+        ]
+    },
+    "MuvLuv_ArtEnQh3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    330,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnMax3"
+        ]
+    },
+    "MuvLuv_ArtEnMax3": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnQh4",
+            "MuvLuv_ArtEnMax4"
+        ]
+    },
+    "MuvLuv_ArtEnQh4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    985,
+                    330,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnMax4"
+        ]
+    },
+    "MuvLuv_ArtEnMax4": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnQh5",
+            "MuvLuv_ArtEnMax5"
+        ]
+    },
+    "MuvLuv_ArtEnQh5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    465,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtEnMax5"
+        ]
+    },
+    "MuvLuv_ArtEnMax5": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_ArtMinjie"
+        ]
+    },
+    "MuvLuv_ArtMinjie": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "minjie.png",
+                "roi": [
+                    470,
+                    100,
+                    160,
+                    50
+                ],
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinQh1",
+            "MuvLuv_ArtMinMax1"
+        ]
+    },
+    "MuvLuv_ArtMinQh1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    195,
+                    220,
+                    100
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinMax1"
+        ]
+    },
+    "MuvLuv_ArtMinMax1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinQh2",
+            "MuvLuv_ArtMinMax2"
+        ]
+    },
+    "MuvLuv_ArtMinQh2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    985,
+                    195,
+                    225,
+                    100
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinMax2"
+        ]
+    },
+    "MuvLuv_ArtMinMax2": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinQh3",
+            "MuvLuv_ArtMinMax3"
+        ]
+    },
+    "MuvLuv_ArtMinQh3": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    330,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinMax3"
+        ]
+    },
+    "MuvLuv_ArtMinMax3": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinQh4",
+            "MuvLuv_ArtMinMax4"
+        ]
+    },
+    "MuvLuv_ArtMinQh4": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    985,
+                    330,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinMax4"
+        ]
+    },
+    "MuvLuv_ArtMinMax4": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinQh5",
+            "MuvLuv_ArtMinMax5"
+        ]
+    },
+    "MuvLuv_ArtMinQh5": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    480,
+                    465,
+                    225,
+                    95
+                ],
+                "expected": [
+                    "最大強化"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_QhStop",
+            "MuvLuv_ArtMinMax5"
+        ]
+    },
+    "MuvLuv_ArtMinMax5": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "max1.png",
+                "threshold": 0.7
+            }
+        },
+        "timeout": -1,
+        "next": [
+            "MuvLuv_Jiesu"
+        ]
     },
     "MuvLuv_Zhuangbei": {
         "recognition": {

@@ -35,6 +35,22 @@
             "option": [
                 "刷几轮后停"
             ]
+        },
+        {
+            "name": "强化アーティファクト",
+            "label": "强化アーティファクト",
+            "description": "自动探索迷宫，刷满指定轮数后进入アーティファクト强化（每种类型 5 项）。开始前请先确保已进入游戏。",
+            "entry": "NodeB",
+            "pipeline_override": {
+                "MuvLuv_Beilv": {
+                    "next": [
+                        "MuvLuv_ArtifactTab"
+                    ]
+                }
+            },
+            "option": [
+                "刷几轮后停"
+            ]
         }
     ],
     "option": {
